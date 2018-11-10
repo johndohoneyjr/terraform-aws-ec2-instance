@@ -1,1 +1,1 @@
-name = dev-auto
+name = "dev-auto"
