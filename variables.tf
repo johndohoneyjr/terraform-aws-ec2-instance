@@ -37,3 +37,9 @@ variable "description" {
   description = "So meta"
   default = "Foo"
 }
+
+variable "iam_policy_actions" {
+  description = "A list of IAM policy actions for this module"
+  type = "list"
+  default = [ "iam:List*" ]
+}
