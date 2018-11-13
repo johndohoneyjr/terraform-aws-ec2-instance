@@ -20,15 +20,23 @@ resource "aws_instance" "ubuntu" {
   }
 }
 
-resource "aws_instance" "ubuntu2" {
-  ami               = "${var.ami_id}"
-  instance_type     = "${var.instance_type}"
-  availability_zone = "${var.aws_region}a"
+resource "aws_iam_policy" "policy" {
+  name        = "${var.name} IAM Permissions testing"
+  path        = "/"
+  description = "Policy to test Sentinel permissions checks"
 
-  tags {
-    Name        = "${var.name}"
-    TTL         = "${var.ttl}"
-    Owner       = "${var.owner}"
-    Description = "This is a Fox10 demo description"
-  }
+  policy = <<EOF
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Action": [
+        "iam:List*"
+      ],
+      "Effect": "Allow",
+      "Resource": "*"
+    }
+  ]
+}
+EOF
 }
