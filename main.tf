@@ -16,12 +16,12 @@ resource "aws_instance" "ubuntu" {
     Name        = "${var.name}"
     TTL         = "${var.ttl}"
     Owner       = "${var.owner}"
-    Description = "This is a Customer2 demo description"
+    Description = "This is a Customer demo description"
   }
 }
 
 resource "aws_iam_policy" "policy" {
-  name        = "${var.name} IAM Permissions testing"
+  name        = "sentinel_test_policy"
   path        = "/"
   description = "Policy to test Sentinel permissions checks"
 
